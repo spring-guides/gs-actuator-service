@@ -71,7 +71,7 @@ Create a Maven POM that looks like this:
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.bootstrap</groupId>
-			<artifactId>spring-bootstrap-actuator</artifactId>
+			<artifactId>spring-bootstrap-actuator-starter</artifactId>
 		</dependency>
 	</dependencies>
 
