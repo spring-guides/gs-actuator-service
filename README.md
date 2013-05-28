@@ -56,7 +56,7 @@ Create a Maven POM that looks like this:
 
 	<groupId>org.springframework</groupId>
 	<artifactId>gs-actuator-service</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.1.0</version>
 
 	<parent>
 		<groupId>org.springframework.bootstrap</groupId>
@@ -311,7 +311,7 @@ Running the Service
 Now you can run it from the jar as well, and distribute that as an executable artifact:
 
 ```
-$ java -jar target/gs-actuator-service-0.0.1-SNAPSHOT.jar
+$ java -jar target/gs-actuator-service-0.1.0.jar
 
 ... service comes up ...
 ```
