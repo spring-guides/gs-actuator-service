@@ -20,7 +20,7 @@ and which also has a ton of features out of the box for managing the service in 
 ### What You'll Need
 
  - About 15 minutes
- - <@prereq_editor_jdk_buildtools/>
+ - <@prereq_editor_jdk_buildtools java_version="7"/>
 
 ## <@how_to_complete_this_guide jump_ahead='Creating a Representation Class'/>
 

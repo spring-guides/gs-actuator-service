@@ -20,7 +20,7 @@ and which also has a ton of features out of the box for managing the service in 
 
  - About 15 minutes
  - A favorite text editor or IDE
- - [JDK 6][jdk] or later
+ - [JDK 7][jdk] or later
  - [Maven 3.0][mvn] or later
 
 [jdk]: http://www.oracle.com/technetwork/java/javase/downloads/index.html
