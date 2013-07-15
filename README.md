@@ -304,8 +304,6 @@ public class HelloWorldConfiguration {
 
 The `@EnableAutoConfiguration` annotation has also been added: it provides a load of defaults (like the embedded servlet container) depending on the contents of your classpath, and other things.
 
-###Build an executable JAR
-
 Now that your `Application` class is ready, you simply instruct the build system to create a single, executable jar containing everything. This makes it easy to ship, version, and deploy the service as an application throughout the development lifecycle, across different environments, and so forth.
 
 Add the following configuration to your existing Maven POM:
