@@ -119,14 +119,9 @@ The `@EnableAutoConfiguration` annotation has also been added: it provides a loa
 
 ## <@build_an_executable_jar/>
 
-Run the Service
--------------------------------------
-
-Now you can run it from the jar as well, and distribute that as an executable artifact:
+<@run_the_application module="service"/>
 
 ```
-$ java -jar target/${project_id}-0.1.0.jar
-
 ... service comes up ...
 ```
 
