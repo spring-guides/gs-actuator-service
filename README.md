@@ -88,19 +88,7 @@ In a project directory of your choosing, create the following subdirectory struc
 		</dependency>
 	</dependencies>
 
-	<properties>
-		<start-class>hello.HelloWorldConfiguration</start-class>
-	</properties>
-
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-shade-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
-
+	<!-- TODO: remove once bootstrap goes GA -->
 	<repositories>
 		<repository>
 			<id>spring-snapshots</id>
@@ -108,14 +96,6 @@ In a project directory of your choosing, create the following subdirectory struc
 			<url>http://repo.springsource.org/snapshot</url>
 			<snapshots>
 				<enabled>true</enabled>
-			</snapshots>
-		</repository>
-		<repository>
-			<id>spring-milestones</id>
-			<name>Spring Milestones</name>
-			<url>http://repo.springsource.org/milestone</url>
-			<snapshots>
-				<enabled>false</enabled>
 			</snapshots>
 		</repository>
 	</repositories>
