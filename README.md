@@ -72,23 +72,22 @@ In a project directory of your choosing, create the following subdirectory struc
 	<version>0.1.0</version>
 
 	<parent>
-		<groupId>org.springframework.bootstrap</groupId>
-		<artifactId>spring-bootstrap-starters</artifactId>
+		<groupId>org.springframework.zero</groupId>
+		<artifactId>spring-starter-parent</artifactId>
 		<version>0.5.0.BUILD-SNAPSHOT</version>
 	</parent>
 
 	<dependencies>
 		<dependency>
-			<groupId>org.springframework.bootstrap</groupId>
-			<artifactId>spring-bootstrap-web-starter</artifactId>
+			<groupId>org.springframework.zero</groupId>
+			<artifactId>spring-starter-web</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework.bootstrap</groupId>
-			<artifactId>spring-bootstrap-actuator-starter</artifactId>
+			<groupId>org.springframework.zero</groupId>
+			<artifactId>spring-starter-actuator</artifactId>
 		</dependency>
 	</dependencies>
 
-	<!-- TODO: remove once bootstrap goes GA -->
 	<repositories>
 		<repository>
 			<id>spring-snapshots</id>
@@ -151,8 +150,8 @@ The first step to adding business functionality is to set up a simple Spring con
 ```java
 package hello;
 
+import org.springframework.autoconfigure.EnableAutoConfiguration;
 import org.springframework.bootstrap.SpringApplication;
-import org.springframework.bootstrap.context.annotation.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -264,8 +263,8 @@ We can launch the application from a custom main class, or we can do that direct
 ```java
 package hello;
 
+import org.springframework.autoconfigure.EnableAutoConfiguration;
 import org.springframework.bootstrap.SpringApplication;
-import org.springframework.bootstrap.context.annotation.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
