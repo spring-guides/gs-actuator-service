@@ -1,10 +1,5 @@
 
-# Getting Started: Building a Spring Bootstrap Actuated RESTful Web Service
-
-Introduction
-------------
-
-### What You'll Build
+## What You'll Build
 
 This guide will take you through creating a "hello world" [RESTful web service](/understanding/REST) with Spring Bootstrap Actuator -- we'll build a service that accepts an HTTP GET request:
 ```
@@ -16,7 +11,8 @@ and responds with the following [JSON](/understanding/JSON):
 ```
 and which also has a ton of features out of the box for managing the service in a production (or other) environment.  The business functionality of the service we build is the same as in the [REST Service Getting Started Guide](https://github.com/springframework-meta/gs-rest-service), but you don't need to have used that guide to take advantage of this one, although it might be interesting to compare the results.
 
-### What You'll Need
+
+## What You'll Need
 
  - About 15 minutes
  - A favorite text editor or IDE
@@ -25,6 +21,7 @@ and which also has a ton of features out of the box for managing the service in 
 
 [jdk]: http://www.oracle.com/technetwork/java/javase/downloads/index.html
 [mvn]: http://maven.apache.org/download.cgi
+
 
 How to complete this guide
 --------------------------
