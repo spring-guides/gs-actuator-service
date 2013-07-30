@@ -2,7 +2,7 @@
 
 ## What You'll Build
 
-This guide will take you through creating a "hello world" [RESTful web service](/understanding/REST) with Spring Bootstrap Actuator -- we'll build a service that accepts an HTTP GET request:
+This guide will take you through creating a "hello world" [RESTful web service](/understanding/REST) with Spring Boot Actuator -- we'll build a service that accepts an HTTP GET request:
 ```
 $ curl http://localhost:9000/hello-world
 ```
@@ -59,13 +59,13 @@ ok
 ```
 We're "OK", so that's good.
 
-There's more, so check out the [Actuator Project](https://github.com/SpringSource/spring-bootstrap/tree/master/spring-bootstrap-actuator) for details.
+There's more, so check out the [Actuator Project](https://github.com/SpringSource/spring-boot/tree/master/spring-bootstrap-actuator) for details.
 
-Creating a Configuration Class
+Creating a application class
 ------------------------------
 The first step to adding business functionality is to set up a simple Spring configuration class. It'll look like this:
 
-    <@snippet path="src/main/java/hello/HelloWorldConfiguration.java" prefix="complete"/>
+    <@snippet path="src/main/java/hello/Application.java" prefix="complete"/>
 
 This class is concise, but there's plenty going on under the hood. [`@EnableWebMvc`](http://static.springsource.org/spring/docs/3.2.x/javadoc-api/org/springframework/web/servlet/config/annotation/EnableWebMvc.html) handles the registration of a number of components that enable Spring's support for annotation-based controllers—you'll build one of those in an upcoming step. And we've also annotated the configuration class with [`@ComponentScan`](http://static.springsource.org/spring/docs/3.2.x/javadoc-api/org/springframework/context/annotation/ComponentScan.html) which tells Spring to scan the `hello` package for those controllers (along with any other annotated component classes).
 
@@ -110,7 +110,7 @@ Create an executable main class
 
 We can launch the application from a custom main class, or we can do that directly from one of the configuration classes.  The easiest way is to use the `SpringApplication` helper class:
 
-    <@snippet path="src/main/java/hello/HelloWorldConfiguration.java" prefix="complete"/>
+    <@snippet path="src/main/java/hello/Application.java" prefix="complete"/>
 
 The `@EnableAutoConfiguration` annotation has also been added: it provides a load of defaults (like the embedded servlet container) depending on the contents of your classpath, and other things.
 
