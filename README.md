@@ -123,7 +123,7 @@ $ mvn exec:java
 ...
 server starts up
 ```
-(you could also build an executable jar, as we ar egoing to do [later in this guide](#jar)).
+(you could also build an executable jar, as we are going to do [later in this guide](#jar)).
 
 Wait for the server to start and go to another terminal to try it out:
 ```
@@ -132,7 +132,7 @@ $ curl localhost:8080
 ```
 So the server is running, but we haven't defined any business endpoints yet.  Instead of a default container-generated HTML error response we are seeing a generic JSON response from the Actuator `/error` endpoint.  You can see in the console logs from the server startup which endpoints are provided out of the box.  Try a few out, for example
 ```
-$ curl localhost:8080/healthz
+$ curl localhost:8080/health
 ok
 ```
 We're "OK", so that's good.
