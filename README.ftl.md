@@ -116,7 +116,7 @@ The `@EnableAutoConfiguration` annotation has also been added: it provides a loa
 
 ## <@build_an_executable_jar/>
 
-<@run_the_application module="service"/>
+<@run_the_application_with_maven module="service"/>
 
 ```
 ... service comes up ...
