@@ -1,24 +1,34 @@
+buildscript {
+    repositories {
+        maven { url "http://repo.springsource.org/libs-snapshot" }
+        mavenLocal()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:0.5.0.BUILD-SNAPSHOT")
+    }
+}
+
 apply plugin: 'java'
-apply plugin: 'eclipse-wtp'
+apply plugin: 'eclipse'
 apply plugin: 'idea'
-apply plugin: 'application'
+apply plugin: 'spring-boot'
 
-mainClassName = "hello.HelloWorlConfiguration"
+jar {
+    baseName = 'gs-actuator-service'
+    version =  '0.1.0'
+}
 
-repositories { 
-    mavenCentral() 
-    
-	//TODO: remove once bootstrap goes GA 
-	maven {
-		url "http://repo.springsource.org/snapshot"
-	}
+repositories {
+    mavenCentral()
+    maven { url "http://repo.springsource.org/libs-snapshot" }
 }
 
 dependencies {
-	compile "org.springframework.bootstrap:spring-bootstrap-web-starter:0.5.0.BUILD-SNAPSHOT"
-	compile "org.springframework.bootstrap:spring-bootstrap-actuator:0.5.0.BUILD-SNAPSHOT"
+    compile("org.springframework.boot:spring-boot-starter-web:0.5.0.BUILD-SNAPSHOT")
+    compile("org.springframework.boot:spring-boot-starter-actuator:0.5.0.BUILD-SNAPSHOT")
+    testCompile("junit:junit:4.11")
 }
 
 task wrapper(type: Wrapper) {
-	gradleVersion = '1.5'
+    gradleVersion = '1.6'
 }
