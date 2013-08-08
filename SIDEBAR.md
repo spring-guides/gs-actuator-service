@@ -10,11 +10,11 @@ There's more to building RESTful web services than is covered here. You may want
 * [Consuming RESTful Web Services on Android][gs-consuming-rest-android]
 * [Consuming XML From a RESTful Web Service on Android][gs-consuming-rest-xml-android]
 
-[gs-consuming-rest]: /guides/gs/consuming-rest/content
+[gs-consuming-rest]: /guides/gs/consuming-rest/
 [gs-rest-service]: /guides/gs/rest-service
-[gs-consuming-rest-android]: /guides/gs/consuming-rest-android/content
-[gs-rest-hateoas]: /guides/gs/rest-hateoas/content
-[gs-consuming-rest-xml-android]: /guides/gs/consuming-rest-xml-android/content
+[gs-consuming-rest-android]: /guides/gs/consuming-rest-android/
+[gs-rest-hateoas]: /guides/gs/rest-hateoas/
+[gs-consuming-rest-xml-android]: /guides/gs/consuming-rest-xml-android/
 
 ### Tutorials
 
