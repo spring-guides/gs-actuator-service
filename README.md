@@ -61,50 +61,50 @@ In a project directory of your choosing, create the following subdirectory struc
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-	<groupId>org.springframework</groupId>
-	<artifactId>gs-actuator-service</artifactId>
-	<version>0.1.0</version>
+    <groupId>org.springframework</groupId>
+    <artifactId>gs-actuator-service</artifactId>
+    <version>0.1.0</version>
 
-	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>0.5.0.BUILD-SNAPSHOT</version>
-	</parent>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>0.5.0.BUILD-SNAPSHOT</version>
+    </parent>
 
-	<dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-actuator</artifactId>
-		</dependency>
-	</dependencies>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+    </dependencies>
 
-	<repositories>
-		<repository>
-			<id>spring-snapshots</id>
-			<name>Spring Snapshots</name>
-			<url>http://repo.springsource.org/libs-snapshot</url>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</repository>
-	</repositories>
-	<pluginRepositories>
-		<pluginRepository>
-			<id>spring-snapshots</id>
-			<name>Spring Snapshots</name>
-			<url>http://repo.springsource.org/libs-snapshot</url>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</pluginRepository>
-	</pluginRepositories>
+    <repositories>
+        <repository>
+            <id>spring-snapshots</id>
+            <name>Spring Snapshots</name>
+            <url>http://repo.springsource.org/libs-snapshot</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>spring-snapshots</id>
+            <name>Spring Snapshots</name>
+            <url>http://repo.springsource.org/libs-snapshot</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
 
 </project>
 ```
@@ -158,10 +158,11 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @EnableWebMvc
 @ComponentScan
 public class Application {
-	
-	public static void main(String[] args) {
-		SpringApplication.run(Application.class, args);
-	}
+
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
+    }
+
 } 
 ```
 
@@ -194,21 +195,21 @@ package hello;
 
 public class Greeting {
 
-	private final long id;
-	private final String content;
+    private final long id;
+    private final String content;
 
-	public Greeting(long id, String content) {
-		this.id = id;
-		this.content = content;
-	}
+    public Greeting(long id, String content) {
+        this.id = id;
+        this.content = content;
+    }
 
-	public long getId() {
-		return id;
-	}
+    public long getId() {
+        return id;
+    }
 
-	public String getContent() {
-		return content;
-	}
+    public String getContent() {
+        return content;
+    }
 
 }
 ```
@@ -235,14 +236,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/hello-world")
 public class HelloWorldController {
 
-	private static final String template = "Hello, %s!";
-	private final AtomicLong counter = new AtomicLong();
-	
-	@RequestMapping(method=RequestMethod.GET)
-	public @ResponseBody Greeting sayHello(@RequestParam(value="name", required=false, defaultValue="Stranger") String name) {
-		return new Greeting(counter.incrementAndGet(), String.format(template, name));
-	}
-	
+    private static final String template = "Hello, %s!";
+    private final AtomicLong counter = new AtomicLong();
+
+    @RequestMapping(method=RequestMethod.GET)
+    public @ResponseBody Greeting sayHello(@RequestParam(value="name", required=false, defaultValue="Stranger") String name) {
+        return new Greeting(counter.incrementAndGet(), String.format(template, name));
+    }
+
 }
 ```
 
@@ -271,10 +272,11 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @EnableWebMvc
 @ComponentScan
 public class Application {
-	
-	public static void main(String[] args) {
-		SpringApplication.run(Application.class, args);
-	}
+
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
+    }
+
 } 
 ```
 
