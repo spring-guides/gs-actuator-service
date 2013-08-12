@@ -146,7 +146,7 @@ ok
 ```
 We're "OK", so that's good.
 
-There's more, so check out the [Actuator Project](https://github.com/SpringSource/spring-boot/tree/master/spring-bootstrap-actuator) for details.
+There's more, so check out the [Actuator Project](https://github.com/SpringSource/spring-boot/tree/master/spring-boot-actuator) for details.
 
 Creating a application class
 ------------------------------
@@ -376,13 +376,4 @@ $ curl localhost:9001/hello-world
 Related Resources
 -----------------
 
-There's more to Actuator and more to building RESTful web services than is covered here. You may want to continue your exploration of Spring and REST with the following Getting Started guides:
-
-* [Getting started with REST services](https://github.com/springframework-meta/gs-rest-service)
-* Handling POST, PUT, and GET requests in REST services
-* Creating self-describing APIs with HATEOAS
-* Securing a REST service with HTTP Basic
-* Securing a REST service with OAuth
-* [Consuming REST services](https://github.com/springframework-meta/gs-consuming-rest-core/blob/master/README.md)
-* Testing REST services
-
+There's more to Actuator and more to building RESTful web services than is covered here.
