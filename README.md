@@ -1,11 +1,11 @@
 
 ## What You'll Build
 
-[u-rest] /understanding/REST
+[u-rest]: /understanding/REST
 ```
 $ curl http://localhost:9000/hello-world
 ```
-[u-json] /understanding/JSON
+[u-json]: /understanding/JSON
 ```
 {"id":1,"content":"Hello, World!"}
 ```
