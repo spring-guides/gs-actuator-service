@@ -2,11 +2,11 @@
 
 ## What You'll Build
 
-This guide will take you through creating a "hello world" [RESTful web service](/understanding/REST) with Spring Boot Actuator -- we'll build a service that accepts an HTTP GET request:
+<@u_rest/>
 ```
 $ curl http://localhost:9000/hello-world
 ```
-and responds with the following [JSON](/understanding/JSON):
+<@u_json/>
 ```
 {"id":1,"content":"Hello, World!"}
 ```
