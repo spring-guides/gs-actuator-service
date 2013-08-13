@@ -28,7 +28,7 @@ There's more to building RESTful web services than is covered here. You may want
 * [JSON][u-json]
 * [HATEOAS][u-hateoas]
 
-<@u_rest/>
-<@u_json/>
-<@u_hateoas/>
+[u-rest]: /understanding/REST
+[u-json]: /understanding/JSON
+[u-hateoas]: /understanding/HATEOAS
 
