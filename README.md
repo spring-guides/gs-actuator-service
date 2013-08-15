@@ -32,13 +32,14 @@ To **start from scratch**, move on to [Set up the project](#scratch).
 
 To **skip the basics**, do the following:
 
- - [Download][zip] and unzip the source repository for this guide, or clone it using [git](/understanding/git):
+ - [Download][zip] and unzip the source repository for this guide, or clone it using [git][u-git]:
 `git clone https://github.com/springframework-meta/gs-actuator-service.git`
  - cd into `gs-actuator-service/initial`.
  - Jump ahead to [Creating a Representation Class](#initial).
 
 **When you're finished**, you can check your results against the code in `gs-actuator-service/complete`.
 [zip]: https://github.com/springframework-meta/gs-actuator-service/archive/master.zip
+[u-git]: /understanding/Git
 
 
 <a name="scratch"></a>
