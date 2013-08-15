@@ -2,7 +2,7 @@
 
 There's more to building RESTful web services than is covered here. You may want to continue your exploration of Spring and REST with the following
 
-### Getting Started Guides
+### Getting Started guides
 
 * [Consuming RESTful Web Services][gs-consuming-rest]
 * [Building RESTful Web Services][gs-rest-service]
@@ -22,7 +22,7 @@ There's more to building RESTful web services than is covered here. You may want
 
 [tut-rest]: /guides/tutorials/rest
 
-### Understanding
+### Concepts and technologies
 
 * [REST][u-rest]
 * [JSON][u-json]
