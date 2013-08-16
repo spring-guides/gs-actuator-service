@@ -2,16 +2,19 @@
 
 ## What You'll Build
 
-<@u_rest/>
-```
+This guide will take you through creating a "hello world" [RESTful web service][u-rest] with Spring Boot Actuator -- we'll build a service that accepts an HTTP GET request:
+
+```sh
 $ curl http://localhost:9000/hello-world
 ```
-<@u_json/>
-```
+
+and responds with the following [JSON][u-json]:
+
+```json
 {"id":1,"content":"Hello, World!"}
 ```
-and which also has a ton of features out of the box for managing the service in a production (or other) environment.  The business functionality of the service we build is the same as in the [REST Service Getting Started Guide](https://github.com/springframework-meta/gs-rest-service), but you don't need to have used that guide to take advantage of this one, although it might be interesting to compare the results.
 
+and which also has a ton of features out of the box for managing the service in a production (or other) environment.  The business functionality of the service we build is the same as in the [Building a RESTful Web Service][gs-rest-service], but you don't need to have used that guide to take advantage of this one, although it might be interesting to compare the results.
 
 ## What You'll Need
 
@@ -29,9 +32,9 @@ Set up the project
 
 <@create_directory_structure_hello/>
 
-### Create a Maven POM
+### Create a Gradle build file
 
-    <@snippet path="pom.xml" prefix="initial"/>
+    <@snippet path="build.gradle" prefix="initial"/>
 
 <@bootstrap_starter_pom_disclaimer/>
 
@@ -39,29 +42,30 @@ Running the Service
 -------------------
 
 You can already run your service and see the Actuator features.  There is a `Spring` main class that already knows how to get the ball rolling and your Maven project is aware of it through the parent pom, so all you need to do is
-```
-$ mvn exec:java
 
-...
-server starts up
+```sh
+$ ./gradlew clean build && java -jar build/libs/${project_id}-0.1.0.jar
 ```
-(you could also build an executable jar, as we are going to do [later in this guide](#jar)).
 
 Wait for the server to start and go to another terminal to try it out:
-```
+
+```sh
 $ curl localhost:8080
 {"error":"Not Found","status":404,"message":"Not Found"}
 ```
+
 So the server is running, but we haven't defined any business endpoints yet.  Instead of a default container-generated HTML error response we are seeing a generic JSON response from the Actuator `/error` endpoint.  You can see in the console logs from the server startup which endpoints are provided out of the box.  Try a few out, for example
-```
+
+```sh
 $ curl localhost:8080/health
 ok
 ```
+
 We're "OK", so that's good.
 
 There's more, so check out the [Actuator Project](https://github.com/SpringSource/spring-boot/tree/master/spring-boot-actuator) for details.
 
-Creating a application class
+Creating an Application class
 ------------------------------
 The first step to adding business functionality is to set up a simple Spring configuration class. It'll look like this:
 
@@ -114,11 +118,11 @@ We can launch the application from a custom main class, or we can do that direct
 
 The `@EnableAutoConfiguration` annotation has also been added: it provides a load of defaults (like the embedded servlet container) depending on the contents of your classpath, and other things.
 
-## <@build_an_executable_jar/>
+## <@build_an_executable_jar_with_gradle/>
 
-<@run_the_application_with_maven module="service"/>
+<@run_the_application_with_gradle module="service"/>
 
-```
+```sh
 ... service comes up ...
 ```
 
@@ -126,7 +130,7 @@ Congratulations! You have just developed a simple RESTful service using Spring. 
 
 Test it:
 
-```
+```sh
 $ curl localhost:8080/hello-world
 {"id":1,"content":"Hello, Stranger!"}
 ```
@@ -139,8 +143,8 @@ Create a properties file
     <@snippet path="src/main/resources/application.properties" prefix="complete"/>
 
 and run the server again
-```
-$ mvn exec:java
+```sh
+$ ./gradlew clean build && java -jar build/libs/${project_id}-0.1.0.jar
 
 ... service comes up on port 9001 ...
 ```
@@ -156,3 +160,7 @@ Related Resources
 -----------------
 
 There's more to Actuator and more to building RESTful web services than is covered here.
+
+<@u_rest/>
+<@u_json/>
+[gs-rest-service]: /guides/gs/rest-service
