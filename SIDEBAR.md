@@ -1,14 +1,14 @@
-### Related Resources
+## Related resources
 
-There's more to building RESTful web services than is covered here. You may want to continue your exploration of Spring and REST with the following
+There's more to building RESTful web services than what is covered here. You may want to continue your exploration of Spring and REST with the following
 
 ### Getting Started guides
 
-* [Consuming RESTful Web Services][gs-consuming-rest]
-* [Building RESTful Web Services][gs-rest-service]
-* [Building a Hypermedia Driven REST Web Service][gs-rest-hateoas]
-* [Consuming RESTful Web Services on Android][gs-consuming-rest-android]
-* [Consuming XML From a RESTful Web Service on Android][gs-consuming-rest-xml-android]
+* [Consuming a RESTful Web Service][gs-consuming-rest]
+* [Building a RESTful Web Service][gs-rest-service]
+* [Building a Hypermedia-Driven RESTful Web Service][gs-rest-hateoas]
+* [Consuming RESTful Web Services with Spring for Android][gs-consuming-rest-android]
+* [Consuming XML from a RESTful Web Service with Spring for Android][gs-consuming-rest-xml-android]
 
 [gs-consuming-rest]: /guides/gs/consuming-rest/
 [gs-rest-service]: /guides/gs/rest-service
