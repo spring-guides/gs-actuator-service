@@ -1,5 +1,5 @@
 
-## What You'll Build
+## What you'll build
 
 This guide will take you through creating a "hello world" [RESTful web service][u-rest] with Spring Boot Actuator -- we'll build a service that accepts an HTTP GET request:
 
@@ -12,10 +12,11 @@ and responds with the following [JSON][u-json]:
 ```json
 {"id":1,"content":"Hello, World!"}
 ```
+and which also has many features out-of-the-box for managing the service in a production (or other) environment.  The business functionality of the service you build is the same as in [Building a RESTful Web Service][gs-rest-service]. You don't need to use that guide to take advantage of this one, although it might be interesting to compare the results.
 
 and which also has a ton of features out of the box for managing the service in a production (or other) environment.  The business functionality of the service we build is the same as in the [Building a RESTful Web Service][gs-rest-service], but you don't need to have used that guide to take advantage of this one, although it might be interesting to compare the results.
 
-## What You'll Need
+## What you'll need
 
  - About 15 minutes
  - A favorite text editor or IDE
@@ -39,7 +40,7 @@ To **skip the basics**, do the following:
  - [Download][zip] and unzip the source repository for this guide, or clone it using [Git][u-git]:
 `git clone https://github.com/springframework-meta/gs-actuator-service.git`
  - cd into `gs-actuator-service/initial`.
- - Jump ahead to [Creating a Representation Class](#initial).
+ - Jump ahead to [Create a representation class](#initial).
 
 **When you're finished**, you can check your results against the code in `gs-actuator-service/complete`.
 [zip]: https://github.com/springframework-meta/gs-actuator-service/archive/master.zip
@@ -98,10 +99,10 @@ task wrapper(type: Wrapper) {
 
 This guide is using [Spring Boot's starter POMs](/guides/gs/spring-boot/).
 
-Running the Service
+Run the service
 -------------------
 
-You can already run your service and see the Actuator features.  There is a `Spring` main class that already knows how to get the ball rolling and your Maven project is aware of it through the parent pom, so all you need to do is
+You can already run your service and see the Actuator features.  There is a `Spring` main class that already knows how to get the ball rolling and your Maven project is aware of it through the parent pom, so all you need to do is run this command.
 
 ```sh
 $ ./gradlew clean build && java -jar build/libs/gs-actuator-service-0.1.0.jar
@@ -114,8 +115,7 @@ $ curl localhost:8080
 {"error":"Not Found","status":404,"message":"Not Found"}
 ```
 
-So the server is running, but we haven't defined any business endpoints yet.  Instead of a default container-generated HTML error response we are seeing a generic JSON response from the Actuator `/error` endpoint.  You can see in the console logs from the server startup which endpoints are provided out of the box.  Try a few out, for example
-
+So the server is running, but you haven't defined any business endpoints yet.  Instead of a default container-generated HTML error response you see a generic JSON response from the Actuator `/error` endpoint.  You can see in the console logs from the server startup which endpoints are provided out of the box.  Try a few out, for example
 ```sh
 $ curl localhost:8080/health
 ok
@@ -123,7 +123,7 @@ ok
 
 We're "OK", so that's good.
 
-There's more, so check out the [Actuator Project](https://github.com/SpringSource/spring-boot/tree/master/spring-boot-actuator) for details.
+Check out the [Actuator Project](https://github.com/SpringSource/spring-boot/tree/master/spring-boot-actuator) for more details.
 
 Creating an Application class
 ------------------------------
@@ -152,17 +152,19 @@ public class Application {
 } 
 ```
 
-This class is concise, but there's plenty going on under the hood. [`@EnableWebMvc`](http://static.springsource.org/spring/docs/3.2.x/javadoc-api/org/springframework/web/servlet/config/annotation/EnableWebMvc.html) handles the registration of a number of components that enable Spring's support for annotation-based controllers—you'll build one of those in an upcoming step. And we've also annotated the configuration class with [`@ComponentScan`](http://static.springsource.org/spring/docs/3.2.x/javadoc-api/org/springframework/context/annotation/ComponentScan.html) which tells Spring to scan the `hello` package for those controllers (along with any other annotated component classes).
+This class is concise, but there's plenty going on under the hood. [`@EnableWebMvc`](http://static.springsource.org/spring/docs/3.2.x/javadoc-api/org/springframework/web/servlet/config/annotation/EnableWebMvc.html) handles the registration of a number of components that enable Spring's support for annotation-based controllers. You'll build a controller in an upcoming step. 
+
+The configuration class is also annotated with [`@ComponentScan`](http://static.springsource.org/spring/docs/3.2.x/javadoc-api/org/springframework/context/annotation/ComponentScan.html), which tells Spring to scan the `hello` package for those controllers (along with any other annotated component classes).
 
 
 <a name="initial"></a>
-Creating a Representation Class
+Create a representation class
 -------------------------------
 With the essential Spring MVC configuration out of the way, it's time to get to the nuts and bolts of our REST service by creating a resource representation class and an endpoint controller.
 
-Before we get too carried away with building the endpoint controller, we need to give some thought to what our API will look like.
+First, give some thought to what your API will look like.
 
-What we want is to handle GET requests for /hello-world, optionally with a name query parameter. In response to such a request, we'd like to send back JSON, representing a greeting, that looks something like this:
+You want to handle GET requests for /hello-world, optionally with a name query parameter. In response to such a request, you will send back JSON, representing a greeting, that looks something like this:
 
 ```json
 {
@@ -173,7 +175,7 @@ What we want is to handle GET requests for /hello-world, optionally with a name 
     
 The `id` field is a unique identifier for the greeting, and `content` is the textual representation of the greeting.
 
-To model the greeting representation, we’ll create a representation class:
+To model the greeting representation, create a representation class:
 
 `src/main/java/hello/Greeting.java`
 ```java
@@ -200,11 +202,11 @@ public class Greeting {
 }
 ```
 
-Now that we've got our representation class, let's create the endpoint controller that will serve it.
+Now that you'll create the endpoint controller that will serve the representation class.
 
-Creating a Resource Controller
+Create a resource controller
 ------------------------------
-In Spring, REST endpoints are just Spring MVC controllers. The following Spring MVC controller handles a GET request for /hello-world and returns our `Greeting` resource:
+In Spring, REST endpoints are just Spring MVC controllers. The following Spring MVC controller handles a GET request for /hello-world and returns the `Greeting` resource:
 
 `src/main/java/hello/HelloWorldController.java`
 ```java
@@ -235,13 +237,13 @@ public class HelloWorldController {
 
 The key difference between a human-facing controller and a REST endpoint controller is in how the response is created. Rather than rely on a view (such as JSP) to render model data in HTML, an endpoint controller simply returns the data to be written directly to the body of the response.
 
-The magic is in the [`@ResponseBody`](http://static.springsource.org/spring/docs/3.2.x/javadoc-api/org/springframework/web/bind/annotation/ResponseBody.html) annotation. `@ResponseBody` tells Spring MVC to not render a model into a view, but rather to write the returned object into the response body. It does this by using one of Spring's message converters. Because Jackson 2 is in the classpath, this means that [`MappingJackson2HttpMessageConverter`](http://static.springsource.org/spring/docs/3.2.x/javadoc-api/org/springframework/http/converter/json/MappingJackson2HttpMessageConverter.html) will handle the conversion of Greeting to JSON if the request's `Accept` header specifies that JSON should be returned.
+The [`@ResponseBody`](http://static.springsource.org/spring/docs/3.2.x/javadoc-api/org/springframework/web/bind/annotation/ResponseBody.html) annotation tells Spring MVC not to render a model into a view, but rather to write the returned object into the response body. It does this by using one of Spring's message converters. Because Jackson 2 is in the classpath, this means that [`MappingJackson2HttpMessageConverter`](http://static.springsource.org/spring/docs/3.2.x/javadoc-api/org/springframework/http/converter/json/MappingJackson2HttpMessageConverter.html) will handle the conversion of Greeting to JSON if the request's `Accept` header specifies that JSON should be returned.
 
 
 Create an executable main class
 ---------------------------------
 
-We can launch the application from a custom main class, or we can do that directly from one of the configuration classes.  The easiest way is to use the `SpringApplication` helper class:
+You can launch the application from a custom main class, or we can do that directly from one of the configuration classes.  The easiest way is to use the `SpringApplication` helper class:
 
 `src/main/java/hello/Application.java`
 ```java
@@ -268,6 +270,8 @@ public class Application {
 
 The `@EnableAutoConfiguration` annotation has also been added: it provides a load of defaults (like the embedded servlet container) depending on the contents of your classpath, and other things.
 
+Build an executable JAR
+-----------------------
 Now that your `Application` class is ready, you simply instruct the build system to create a single, executable jar containing everything. This makes it easy to ship, version, and deploy the service as an application throughout the development lifecycle, across different environments, and so forth.
 
 Update your Gradle `build.gradle` file's `buildscript` section, so that it looks like this:
@@ -322,7 +326,6 @@ $ ./gradlew clean build && java -jar build/libs/gs-actuator-service-0.1.0.jar
 ... service comes up ...
 ```
 
-Congratulations! You have just developed a simple RESTful service using Spring. This is a basic foundation for building a complete REST API in Spring.
 
 Test it:
 
@@ -331,10 +334,10 @@ $ curl localhost:8080/hello-world
 {"id":1,"content":"Hello, Stranger!"}
 ```
 
-Switching to a different server port
+Switch to a different server port
 -----------------------------------------
 
-Create a properties file
+Create a properties file:
 
 `src/main/resources/application.properties`
 ```properties
@@ -357,10 +360,9 @@ $ curl localhost:9001/hello-world
 {"id":1,"content":"Hello, Stranger!"}
 ```
 
-Related Resources
+Summary
 -----------------
-
-There's more to Actuator and more to building RESTful web services than is covered here.
+Congratulations! You have just developed a simple RESTful service using Spring. This is a basic foundation for building a complete REST API in Spring.
 
 [u-rest]: /understanding/REST
 [u-json]: /understanding/JSON
