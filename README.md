@@ -1,20 +1,21 @@
 
+[Spring Boot Actuator](https://github.com/SpringSource/spring-boot/tree/master/spring-boot-actuator) is a sub-project of Spring Boot. It adds several production grade services to your application with little effort on your part. In this guide, you'll build an application and then see how to add these services.
+
 ## What you'll build
 
-This guide will take you through creating a "hello world" [RESTful web service][u-rest] with Spring Boot Actuator -- we'll build a service that accepts an HTTP GET request:
+This guide will take you through creating a "hello world" [RESTful web service][u-rest] with Spring Boot Actuator. You'll build a service that accepts an HTTP GET request:
 
 ```sh
 $ curl http://localhost:9000/hello-world
 ```
 
-and responds with the following [JSON][u-json]:
+It responds with the following [JSON][u-json]:
 
 ```json
 {"id":1,"content":"Hello, World!"}
 ```
-and which also has many features out-of-the-box for managing the service in a production (or other) environment.  The business functionality of the service you build is the same as in [Building a RESTful Web Service][gs-rest-service]. You don't need to use that guide to take advantage of this one, although it might be interesting to compare the results.
 
-and which also has a ton of features out of the box for managing the service in a production (or other) environment.  The business functionality of the service we build is the same as in the [Building a RESTful Web Service][gs-rest-service], but you don't need to have used that guide to take advantage of this one, although it might be interesting to compare the results.
+There are also has many features added to your application out-of-the-box for managing the service in a production (or other) environment.  The business functionality of the service you build is the same as in [Building a RESTful Web Service][gs-rest-service]. You don't need to use that guide to take advantage of this one, although it might be interesting to compare the results.
 
 ## What you'll need
 
@@ -102,13 +103,13 @@ This guide is using [Spring Boot's starter POMs](/guides/gs/spring-boot/).
 Run the service
 -------------------
 
-You can already run your service and see the Actuator features.  There is a `Spring` main class that already knows how to get the ball rolling and your Maven project is aware of it through the parent pom, so all you need to do is run this command.
+You can already run your service and see the Actuator features.  There is a `Spring` main class that already knows how to get the ball rolling. All you need to do is run this command.
 
 ```sh
 $ ./gradlew clean build && java -jar build/libs/gs-actuator-service-0.1.0.jar
 ```
 
-Wait for the server to start and go to another terminal to try it out:
+You haven't written any code yet, so what's happening? Wait for the server to start and go to another terminal to try it out:
 
 ```sh
 $ curl localhost:8080
@@ -121,50 +122,16 @@ $ curl localhost:8080/health
 ok
 ```
 
-We're "OK", so that's good.
+You're "OK", so that's good.
 
 Check out the [Actuator Project](https://github.com/SpringSource/spring-boot/tree/master/spring-boot-actuator) for more details.
-
-Creating an Application class
-------------------------------
-The first step to adding business functionality is to set up a simple Spring configuration class. It'll look like this:
-
-`src/main/java/hello/Application.java`
-```java
-package hello;
-
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.SpringApplication;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-
-@Configuration
-@EnableAutoConfiguration
-@EnableWebMvc
-@ComponentScan
-public class Application {
-
-    public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
-    }
-
-} 
-```
-
-This class is concise, but there's plenty going on under the hood. [`@EnableWebMvc`](http://static.springsource.org/spring/docs/3.2.x/javadoc-api/org/springframework/web/servlet/config/annotation/EnableWebMvc.html) handles the registration of a number of components that enable Spring's support for annotation-based controllers. You'll build a controller in an upcoming step. 
-
-The configuration class is also annotated with [`@ComponentScan`](http://static.springsource.org/spring/docs/3.2.x/javadoc-api/org/springframework/context/annotation/ComponentScan.html), which tells Spring to scan the `hello` package for those controllers (along with any other annotated component classes).
-
 
 <a name="initial"></a>
 Create a representation class
 -------------------------------
-With the essential Spring MVC configuration out of the way, it's time to get to the nuts and bolts of our REST service by creating a resource representation class and an endpoint controller.
-
 First, give some thought to what your API will look like.
 
-You want to handle GET requests for /hello-world, optionally with a name query parameter. In response to such a request, you will send back JSON, representing a greeting, that looks something like this:
+You want to handle GET requests for `/hello-world`, optionally with a name query parameter. In response to such a request, you will send back JSON, representing a greeting, that looks something like this:
 
 ```json
 {
@@ -241,7 +208,7 @@ The [`@ResponseBody`](http://static.springsource.org/spring/docs/3.2.x/javadoc-a
 
 
 Create an executable main class
----------------------------------
+-------------------------------
 
 You can launch the application from a custom main class, or we can do that directly from one of the configuration classes.  The easiest way is to use the `SpringApplication` helper class:
 
@@ -269,6 +236,10 @@ public class Application {
 ```
 
 The `@EnableAutoConfiguration` annotation has also been added: it provides a load of defaults (like the embedded servlet container) depending on the contents of your classpath, and other things.
+
+[`@EnableWebMvc`](http://static.springsource.org/spring/docs/3.2.x/javadoc-api/org/springframework/web/servlet/config/annotation/EnableWebMvc.html) handles the registration of a number of components that enable Spring's support for annotation-based controllers. You'll build a controller in an upcoming step. 
+
+It is also annotated with [`@ComponentScan`](http://static.springsource.org/spring/docs/3.2.x/javadoc-api/org/springframework/context/annotation/ComponentScan.html), which tells Spring to scan the `hello` package for those controllers (along with any other annotated component classes).
 
 Build an executable JAR
 -----------------------
@@ -346,7 +317,8 @@ management.port: 9001
 management.address: 127.0.0.1
 ```
 
-and run the server again
+Run the server again:
+
 ```sh
 $ ./gradlew clean build && java -jar build/libs/gs-actuator-service-0.1.0.jar
 
