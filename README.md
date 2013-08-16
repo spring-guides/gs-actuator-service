@@ -308,7 +308,7 @@ $ curl localhost:8080/hello-world
 Switch to a different server port
 -----------------------------------------
 
-Create a properties file:
+Spring Boot Acuator defaults to run on port 8080. By adding an `application.properties` file, you can override that setting.
 
 `src/main/resources/application.properties`
 ```properties
@@ -334,7 +334,7 @@ $ curl localhost:9001/hello-world
 
 Summary
 -----------------
-Congratulations! You have just developed a simple RESTful service using Spring. This is a basic foundation for building a complete REST API in Spring.
+Congratulations! You have just developed a simple RESTful service using Spring. You added some useful built-in services thanks to Spring Boot Actuator.
 
 [u-rest]: /understanding/REST
 [u-json]: /understanding/JSON
