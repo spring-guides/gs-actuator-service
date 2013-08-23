@@ -34,9 +34,8 @@ Set up the project
 
 <@create_directory_structure_hello/>
 
-### Create a Gradle build file
 
-    <@snippet path="build.gradle" prefix="initial"/>
+<@create_both_builds/>
 
 <@bootstrap_starter_pom_disclaimer/>
 
@@ -113,9 +112,9 @@ The `@EnableAutoConfiguration` annotation has also been added: it provides a loa
 It is also annotated with [`@ComponentScan`](http://static.springsource.org/spring/docs/3.2.x/javadoc-api/org/springframework/context/annotation/ComponentScan.html), which tells Spring to scan the `hello` package for those controllers (along with any other annotated component classes).
 
 <@build_an_executable_jar_mainhead/>
-<@build_an_executable_jar_with_gradle/>
+<@build_an_executable_jar_with_both/>
 
-<@run_the_application_with_gradle module="service"/>
+<@run_the_application_with_both module="service"/>
 
 ```sh
 ... service comes up ...
