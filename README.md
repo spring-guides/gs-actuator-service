@@ -241,7 +241,7 @@ public class Application {
 
 The `@EnableAutoConfiguration` annotation has also been added: it provides a load of defaults (like the embedded servlet container) depending on the contents of your classpath, and other things.
 
-[`@EnableWebMvc`](http://docs.spring.io/spring/docs/3.2.x/javadoc-api/org/springframework/web/servlet/config/annotation/EnableWebMvc.html) handles the registration of a number of components that enable Spring's support for annotation-based controllers. You'll build a controller in an upcoming step. 
+In a conventional Spring MVC application, you would add `@EnableWebMvc` to turn on key behaviors including configuration of a `DispatcherServlet`. But Spring Boot turns on this annotation automatically when it detects **spring-webmvc** on your classpath. This sets you up to build a controller in an upcoming step.
 
 It is also annotated with [`@ComponentScan`](http://docs.spring.io/spring/docs/3.2.x/javadoc-api/org/springframework/context/annotation/ComponentScan.html), which tells Spring to scan the `hello` package for those controllers (along with any other annotated component classes).
 
