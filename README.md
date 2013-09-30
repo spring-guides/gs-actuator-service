@@ -1,5 +1,5 @@
 
-[Spring Boot Actuator](https://github.com/SpringSource/spring-boot/tree/master/spring-boot-actuator) is a sub-project of Spring Boot. It adds several production grade services to your application with little effort on your part. In this guide, you'll build an application and then see how to add these services.
+[Spring Boot Actuator](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-actuator) is a sub-project of Spring Boot. It adds several production grade services to your application with little effort on your part. In this guide, you'll build an application and then see how to add these services.
 
 ## What you'll build
 
@@ -130,7 +130,7 @@ ok
 
 You're "OK", so that's good.
 
-Check out the [Actuator Project](https://github.com/SpringSource/spring-boot/tree/master/spring-boot-actuator) for more details.
+Check out the [Actuator Project](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-actuator) for more details.
 
 <a name="initial"></a>
 Create a representation class
