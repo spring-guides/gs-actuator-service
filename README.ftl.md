@@ -146,7 +146,7 @@ Test it:
 ```
 $ curl localhost:8080/hello-world
 curl: (7) couldn't connect to host
-$ curl localhost:9001/hello-world
+$ curl localhost:9000/hello-world
 {"id":1,"content":"Hello, Stranger!"}
 ```
 
