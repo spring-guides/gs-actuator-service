@@ -140,7 +140,7 @@ Run the server again:
 ```sh
 $ ./gradlew clean build && java -jar build/libs/${project_id}-0.1.0.jar
 
-... service comes up on port 9001 ...
+... service comes up on port 9000 ...
 ```
 Test it:
 ```
