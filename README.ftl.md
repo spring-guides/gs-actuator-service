@@ -39,23 +39,29 @@ Set up the project
 
 <@bootstrap_starter_pom_disclaimer/>
 
-Run the service
--------------------
+Run the empty service
+---------------------
+For starters, here's an empty Spring MVC application.
 
-You can already run your service and see the Actuator features.  There is a `Spring` main class that already knows how to get the ball rolling. All you need to do is run this command.
+    <@snippet path="src/main/java/hello/HelloWorldConfiguration.java" prefix="initial"/>
+    
+The `@EnableAutoConfiguration` annotation provides a load of defaults (like the embedded servlet container) depending on the contents of your classpath, and other things. It also turns on Spring MVC's @EnableWebMvc annotation that activates web endpoints.
+
+There aren't any endpoints defined in this application, but there's enough to launch things and see some of Actuator's features.  The `SpringApplication.run()` command knows how to launch the web application. All you need to do is run this command.
 
 ```sh
 $ ./gradlew clean build && java -jar build/libs/${project_id}-0.1.0.jar
 ```
 
-You haven't written any code yet, so what's happening? Wait for the server to start and go to another terminal to try it out:
+You hardly written any code yet, so what's happening? Wait for the server to start and go to another terminal to try it out:
 
 ```sh
 $ curl localhost:8080
-{"error":"Not Found","status":404,"message":"Not Found"}
+{"timestamp":1384788106983,"error":"Not Found","status":404,"message":""}
 ```
 
-So the server is running, but you haven't defined any business endpoints yet.  Instead of a default container-generated HTML error response you see a generic JSON response from the Actuator `/error` endpoint.  You can see in the console logs from the server startup which endpoints are provided out of the box.  Try a few out, for example
+So the server is running, but you haven't defined any business endpoints yet. Instead of a default container-generated HTML error response, you see a generic JSON response from the Actuator `/error` endpoint.  You can see in the console logs from the server startup which endpoints are provided out of the box.  Try a few out, for example
+
 ```sh
 $ curl localhost:8080/health
 ok
@@ -63,7 +69,7 @@ ok
 
 You're "OK", so that's good.
 
-Check out the [Actuator Project](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-actuator) for more details.
+Check out Spring Boot's [Actuator Project](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-actuator) for more details.
 
 <a name="initial"></a>
 Create a representation class
@@ -105,8 +111,6 @@ You can launch the application from a custom main class, or we can do that direc
 
     <@snippet path="src/main/java/hello/Application.java" prefix="complete"/>
 
-The `@EnableAutoConfiguration` annotation has also been added: it provides a load of defaults (like the embedded servlet container) depending on the contents of your classpath, and other things.
-
 In a conventional Spring MVC application, you would add `@EnableWebMvc` to turn on key behaviors including configuration of a `DispatcherServlet`. But Spring Boot turns on this annotation automatically when it detects **spring-webmvc** on your classpath. This sets you up to build a controller in an upcoming step.
 
 It is also annotated with [`@ComponentScan`](http://docs.spring.io/spring/docs/3.2.x/javadoc-api/org/springframework/context/annotation/ComponentScan.html), which tells Spring to scan the `hello` package for those controllers (along with any other annotated component classes).
@@ -145,7 +149,7 @@ $ ./gradlew clean build && java -jar build/libs/${project_id}-0.1.0.jar
 Test it:
 ```
 $ curl localhost:8080/hello-world
-curl: (7) couldn't connect to host
+curl: (52) Empty reply from server
 $ curl localhost:9000/hello-world
 {"id":1,"content":"Hello, Stranger!"}
 ```

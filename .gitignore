@@ -9,3 +9,6 @@ bin
 build
 target
 dependency-reduced-pom.xml
+.idea
+*.iml
+out
