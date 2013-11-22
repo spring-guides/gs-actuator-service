@@ -27,30 +27,30 @@ There are also has many features added to your application out-of-the-box for ma
 === What you'll need
 
 :java_version: 7
-include::https://raw.github.com/spring-guides/getting-started-macros/master//prereq_editor_jdk_buildtools.adoc[]
+include::https://raw.github.com/spring-guides/getting-started-macros/master/prereq_editor_jdk_buildtools.adoc[]
 
 
 :jump_ahead: Create a representation class
-include::https://raw.github.com/spring-guides/getting-started-macros/master//how_to_complete_this_guide.adoc[]
+include::https://raw.github.com/spring-guides/getting-started-macros/master/how_to_complete_this_guide.adoc[]
 
 
 [[scratch]]
 == Set up the project
-include::https://raw.github.com/spring-guides/getting-started-macros/master//build_system_intro.adoc[]
+include::https://raw.github.com/spring-guides/getting-started-macros/master/build_system_intro.adoc[]
 
-include::https://raw.github.com/spring-guides/getting-started-macros/master//create_directory_structure_hello.adoc[]
+include::https://raw.github.com/spring-guides/getting-started-macros/master/create_directory_structure_hello.adoc[]
 
 
-include::https://raw.github.com/spring-guides/getting-started-macros/master//create_both_builds.adoc[]
+include::https://raw.github.com/spring-guides/getting-started-macros/master/create_both_builds.adoc[]
 
 `build.gradle`
 // AsciiDoc source formatting doesn't support groovy, so using java instead
 [source,java]
 ----
-include::../initial/build.gradle[]
+include::initial/build.gradle[]
 ----
 
-include::https://raw.github.com/spring-guides/getting-started-macros/master//bootstrap_starter_pom_disclaimer.adoc[]
+include::https://raw.github.com/spring-guides/getting-started-macros/master/bootstrap_starter_pom_disclaimer.adoc[]
 
 == Run the empty service
 For starters, here's an empty Spring MVC application.
@@ -142,11 +142,11 @@ In a conventional Spring MVC application, you would add `@EnableWebMvc` to turn 
 
 It is also annotated with http://docs.spring.io/spring/docs/3.2.x/javadoc-api/org/springframework/context/annotation/ComponentScan.html[`@ComponentScan`], which tells Spring to scan the `hello` package for those controllers (along with any other annotated component classes).
 
-include::https://raw.github.com/spring-guides/getting-started-macros/master//build_an_executable_jar_mainhead.adoc[]
-include::https://raw.github.com/spring-guides/getting-started-macros/master//build_an_executable_jar_with_both.adoc[]
+include::https://raw.github.com/spring-guides/getting-started-macros/master/build_an_executable_jar_mainhead.adoc[]
+include::https://raw.github.com/spring-guides/getting-started-macros/master/build_an_executable_jar_with_both.adoc[]
 
 :module: service
-include::https://raw.github.com/spring-guides/getting-started-macros/master//run_the_application_with_both.adoc[]
+include::https://raw.github.com/spring-guides/getting-started-macros/master/run_the_application_with_both.adoc[]
 
 ....
 ... service comes up ...
