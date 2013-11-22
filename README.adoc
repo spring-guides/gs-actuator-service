@@ -1,4 +1,5 @@
 :toc:
+:gs-rest-service: link:/guides/gs/rest-service
 :icons: font
 :source-highlighter: prettify
 :project_id: gs-actuator-service
@@ -21,7 +22,7 @@ It responds with the following link:/understanding/JSON[JSON]:
 {"id":1,"content":"Hello, World!"}
 ----
 
-There are also has many features added to your application out-of-the-box for managing the service in a production (or other) environment.  The business functionality of the service you build is the same as in [Building a RESTful Web Service][gs-rest-service]. You don't need to use that guide to take advantage of this one, although it might be interesting to compare the results.
+There are also has many features added to your application out-of-the-box for managing the service in a production (or other) environment.  The business functionality of the service you build is the same as in {gs-rest-service}[Building a RESTful Web Service]. You don't need to use that guide to take advantage of this one, although it might be interesting to compare the results.
 
 === What you'll need
 
@@ -64,26 +65,24 @@ The `@EnableAutoConfiguration` annotation provides a load of defaults (like the 
 
 There aren't any endpoints defined in this application, but there's enough to launch things and see some of Actuator's features.  The `SpringApplication.run()` command knows how to launch the web application. All you need to do is run this command.
 
-[source,sh,subs="attributes"]
+[subs="attributes"]
 ----
 $ ./gradlew clean build && java -jar build/libs/{project_id}-0.1.0.jar
 ----
 
 You hardly written any code yet, so what's happening? Wait for the server to start and go to another terminal to try it out:
 
-[source,sh]
-----
+....
 $ curl localhost:8080
 {"timestamp":1384788106983,"error":"Not Found","status":404,"message":""}
-----
+....
 
 So the server is running, but you haven't defined any business endpoints yet. Instead of a default container-generated HTML error response, you see a generic JSON response from the Actuator `/error` endpoint.  You can see in the console logs from the server startup which endpoints are provided out of the box.  Try a few out, for example
 
-[source,sh]
-----
+....
 $ curl localhost:8080/health
 ok
-----
+....
 
 You're "OK", so that's good.
 
@@ -155,12 +154,10 @@ include::https://raw.github.com/spring-guides/getting-started-macros/master/macr
 
 
 Test it:
-
-[source,sh]
-----
+....
 $ curl localhost:8080/hello-world
 {"id":1,"content":"Hello, Stranger!"}
-----
+....
 
 == Switch to a different server port
 
@@ -174,22 +171,20 @@ include::complete/src/main/resources/application.properties[]
 
 Run the server again:
 
-[source,sh,subs="attributes"]
-----
+[subs="attributes"]
+....
 $ ./gradlew clean build && java -jar build/libs/{project_id}-0.1.0.jar
 
 ... service comes up on port 9000 ...
-----
+....
 
 Test it:
-----
+....
 $ curl localhost:8080/hello-world
 curl: (52) Empty reply from server
 $ curl localhost:9000/hello-world
 {"id":1,"content":"Hello, Stranger!"}
-----
+....
 
 == Summary
 Congratulations! You have just developed a simple RESTful service using Spring. You added some useful built-in services thanks to Spring Boot Actuator.
-
-[gs-rest-service]: /guides/gs/rest-service
