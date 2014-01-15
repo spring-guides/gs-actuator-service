@@ -1,3 +1,7 @@
+---
+tags: []
+projects: [spring-boot]
+---
 :toc:
 :gs-rest-service: link:/guides/gs/rest-service
 :icons: font
