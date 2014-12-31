@@ -25,7 +25,7 @@
     </dependencies>
 
     <properties>
-        <start-class>hello.Application</start-class>
+        <start-class>hello.HelloWorldConfiguration</start-class>
     </properties>
 
     <build>
