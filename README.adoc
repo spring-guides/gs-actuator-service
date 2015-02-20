@@ -54,7 +54,7 @@ For starters, here's an empty Spring MVC application.
 include::initial/src/main/java/hello/HelloWorldConfiguration.java[]
 ----
     
-The `@EnableAutoConfiguration` annotation provides a load of defaults (like the embedded servlet container) depending on the contents of your classpath, and other things. It also turns on Spring MVC's @EnableWebMvc annotation that activates web endpoints.
+The `@SpringBootApplication` annotation provides a load of defaults (like the embedded servlet container) depending on the contents of your classpath, and other things. It also turns on Spring MVC's @EnableWebMvc annotation that activates web endpoints.
 
 There aren't any endpoints defined in this application, but there's enough to launch things and see some of Actuator's features.  The `SpringApplication.run()` command knows how to launch the web application. All you need to do is run this command.
 
@@ -74,10 +74,10 @@ So the server is running, but you haven't defined any business endpoints yet. In
 
 ....
 $ curl localhost:8080/health
-ok
+{"status":"UP"}
 ....
 
-You're "OK", so that's good.
+You're "UP", so that's good.
 
 Check out Spring Boot's https://github.com/spring-projects/spring-boot/tree/master/spring-boot-actuator[Actuator Project] for more details.
 
@@ -135,7 +135,7 @@ include::complete/src/main/java/hello/Application.java[]
 
 In a conventional Spring MVC application, you would add `@EnableWebMvc` to turn on key behaviors including configuration of a `DispatcherServlet`. But Spring Boot turns on this annotation automatically when it detects **spring-webmvc** on your classpath. This sets you up to build a controller in an upcoming step.
 
-It is also annotated with http://docs.spring.io/spring/docs/{spring_version}/javadoc-api/org/springframework/context/annotation/ComponentScan.html[`@ComponentScan`], which tells Spring to scan the `hello` package for those controllers (along with any other annotated component classes).
+The `@SpringBootApplication` also brings in a http://docs.spring.io/spring/docs/{spring_version}/javadoc-api/org/springframework/context/annotation/ComponentScan.html[`@ComponentScan`], which tells Spring to scan the `hello` package for those controllers (along with any other annotated component classes).
 
 include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/build_an_executable_jar_mainhead.adoc[]
 include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/build_an_executable_jar_with_both.adoc[]
@@ -177,6 +177,8 @@ $ curl localhost:8080/hello-world
 curl: (52) Empty reply from server
 $ curl localhost:9000/hello-world
 {"id":1,"content":"Hello, Stranger!"}
+$ curl localhost:9001/health
+{"status":"UP"}
 ....
 
 == Summary
