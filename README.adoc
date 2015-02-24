@@ -127,10 +127,10 @@ NOTE: How do you know Jackson 2 is on the classpath? Either run ` mvn dependency
 
 You can launch the application from a custom main class, or we can do that directly from one of the configuration classes.  The easiest way is to use the `SpringApplication` helper class:
 
-`src/main/java/hello/Application.java`
+`src/main/java/hello/HelloWorldConfiguration.java`
 [source,java]
 ----
-include::complete/src/main/java/hello/Application.java[]
+include::complete/src/main/java/hello/HelloWorldConfiguration.java[]
 ----
 
 In a conventional Spring MVC application, you would add `@EnableWebMvc` to turn on key behaviors including configuration of a `DispatcherServlet`. But Spring Boot turns on this annotation automatically when it detects **spring-webmvc** on your classpath. This sets you up to build a controller in an upcoming step.
