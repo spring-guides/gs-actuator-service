@@ -29,6 +29,9 @@
         </dependency>
     </dependencies>
 
+    <properties>
+        <java.version>1.7</java.version>
+    </properties>
 
     <build>
         <plugins>
