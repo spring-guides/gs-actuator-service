@@ -53,7 +53,7 @@ For starters, here's an empty Spring MVC application.
 ----
 include::initial/src/main/java/hello/HelloWorldConfiguration.java[]
 ----
-    
+
 The `@SpringBootApplication` annotation provides a load of defaults (like the embedded servlet container) depending on the contents of your classpath, and other things. It also turns on Spring MVC's @EnableWebMvc annotation that activates web endpoints.
 
 There aren't any endpoints defined in this application, but there's enough to launch things and see some of Actuator's features.  The `SpringApplication.run()` command knows how to launch the web application. All you need to do is run this command.
@@ -94,7 +94,7 @@ You want to handle GET requests for `/hello-world`, optionally with a name query
     "content": "Hello, World!"
 }
 ----
-    
+
 The `id` field is a unique identifier for the greeting, and `content` is the textual representation of the greeting.
 
 To model the greeting representation, create a representation class:
@@ -181,8 +181,23 @@ $ curl localhost:9001/health
 {"status":"UP"}
 ....
 
+== Test your application
+
+In order to check if your application is functional you should write unit / integration tests of your application.
+Below you can find an example of such a test that checks:
+
+- if your controller is responsive
+- if your management endpoint is responsive
+
+As you can see for tests we're starting the application on a random port.
+
+`src/test/java/hello/HelloWorldConfigurationTests.java`
+[source,java]
+----
+include::complete/src/test/java/hello/HelloWorldConfigurationTests.java[]
+----
+
 == Summary
 Congratulations! You have just developed a simple RESTful service using Spring. You added some useful built-in services thanks to Spring Boot Actuator.
 
 include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/footer.adoc[]
-
