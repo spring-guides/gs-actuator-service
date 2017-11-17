@@ -79,7 +79,7 @@ $ curl localhost:8080/health
 
 You're "UP", so that's good.
 
-Check out Spring Boot's https://github.com/spring-projects/spring-boot/tree/master/spring-boot-actuator[Actuator Project] for more details.
+Check out Spring Boot's https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-actuator[Actuator Project] for more details.
 
 [[initial]]
 == Create a representation class
