@@ -1,7 +1,3 @@
----
-tags: [spring-boot]
-projects: [spring-boot]
----
 :toc:
 :gs-rest-service: link:/guides/gs/rest-service
 :spring_version: current
