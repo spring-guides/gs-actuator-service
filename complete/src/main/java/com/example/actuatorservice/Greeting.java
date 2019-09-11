@@ -1,4 +1,4 @@
-package hello;
+package com.example.actuatorservice;
 
 public class Greeting {
 
