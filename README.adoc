@@ -5,84 +5,150 @@
 :source-highlighter: prettify
 :project_id: gs-actuator-service
 
-https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#production-ready[Spring Boot Actuator] is a sub-project of Spring Boot. It adds several production grade services to your application with little effort on your part. In this guide, you'll build an application and then see how to add these services.
+https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#production-ready[Spring Boot Actuator]
+is a sub-project of Spring Boot. It adds several production grade services to your
+application with little effort on your part. In this guide, you will build an application
+and then see how to add these services.
 
-== What you'll build
+== What You Will build
 
-This guide will take you through creating a "hello world" link:/understanding/REST[RESTful web service] with Spring Boot Actuator. You'll build a service that accepts an HTTP GET request:
+This guide takes you through creating a "`Hello, world`" RESTful web service with Spring
+Boot Actuator. You will build a service that accepts the following HTTP GET request:
 
+====
 [source,sh]
 ----
 $ curl http://localhost:9000/hello-world
 ----
+====
 
-It responds with the following link:/understanding/JSON[JSON]:
+It responds with the following JSON:
 
+====
 [source,json]
 ----
 {"id":1,"content":"Hello, World!"}
 ----
+====
 
-There are also many features added to your application out-of-the-box for managing the service in a production (or other) environment.  The business functionality of the service you build is the same as in {gs-rest-service}[Building a RESTful Web Service]. You don't need to use that guide to take advantage of this one, although it might be interesting to compare the results.
+There are also many features added to your application for managing the service in a
+production (or other) environment. The business functionality of the service you build is
+the same as in {gs-rest-service}[Building a RESTful Web Service]. You need need not use
+that guide to take advantage of this one, although it might be interesting to compare the
+results.
 
-=== What you'll need
+=== What You need
 
 :java_version: 1.8
 include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/prereq_editor_jdk_buildtools.adoc[]
 
-
 include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/how_to_complete_this_guide.adoc[]
 
+== Starting with Spring Initializr
 
-include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/hide-show-gradle.adoc[]
+For all Spring applications, you should start with the https://start.spring.io[Spring
+Initializr]. The Initializr offers a fast way to pull in all the dependencies you need for
+an application and does a lot of the set up for you. This example needs the Spring Web
+and Spring Boot Actuator dependencies. The following image shows the
+Initializr set up for this sample project:
 
-include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/hide-show-maven.adoc[]
+image::images/initializr.jpg[]
 
-include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/hide-show-sts.adoc[]
+NOTE: The preceding image shows the Initializr with Maven chosen as the build tool. You
+can also use Gradle. It also shows values of `com.example` and
+`actuator-service` as the Group and Artifact, respectively. You will use those
+values throughout the rest of this sample.
 
+The following listing shows the `pom.xml` file created when you choose Maven:
 
-== Run the empty service
-For starters, here's an empty Spring MVC application.
+====
+[src,xml]
+----
+include::complete/pom.xml[]
+----
+====
 
-`src/main/java/hello/HelloWorldApplication.java`
+The following listing shows the `build.gradle` file created when you choose Gradle:
+
+====
+[src,groovy]
+----
+include::complete/build.gradle[]
+----
+====
+
+== Run the Empty Service
+
+The Spring Initializr creates an empty application that you can use to get started. The
+following example (from
+`src/main/java/com/example/actuatorservice/ActuatorServiceApplication` in the `initial`
+directory) shows the class created by the Spring Initializr:
+
+====
 [source,java]
 ----
-include::initial/src/main/java/hello/HelloWorldApplication.java[]
+include::initial/src/main/java/com/example/actuatorservice/ActuatorServiceApplication.java[]
 ----
+====
 
-The `@SpringBootApplication` annotation provides a load of defaults (like the embedded servlet container) depending on the contents of your classpath, and other things. It also turns on Spring MVC's @EnableWebMvc annotation that activates web endpoints.
+The `@SpringBootApplication` annotation provides a load of defaults (like the embedded
+servlet container), depending on the contents of your classpath and other things. It also
+turns on Spring MVC's `@EnableWebMvc` annotation, which activates web endpoints.
 
-There aren't any endpoints defined in this application, but there's enough to launch things and see some of Actuator's features.  The `SpringApplication.run()` command knows how to launch the web application. All you need to do is run this command.
+There are no endpoints defined in this application, but there is enough to launch things
+and see some of Actuator's features. The `SpringApplication.run()` command knows how to
+launch the web application. All you need to do is run the following command:
 
-[subs="attributes"]
+====
+[source,bash,subs="attributes"]
 ----
 $ ./gradlew clean build && java -jar build/libs/{project_id}-0.1.0.jar
 ----
+====
 
-You hardly written any code yet, so what's happening? Wait for the server to start and go to another terminal to try it out:
+You have yet to write any code, so what is happening? To see the answer, wait for the
+server to start, open another terminal, and try the following command (shown with its
+output):
 
-....
+====
+[source,bash]
+----
 $ curl localhost:8080
 {"timestamp":1384788106983,"error":"Not Found","status":404,"message":""}
-....
+----
+====
 
-So the server is running, but you haven't defined any business endpoints yet. Instead of a default container-generated HTML error response, you see a generic JSON response from the Actuator `/error` endpoint.  You can see in the console logs from the server startup which endpoints are provided out of the box.  Try a few out, for example
+The output of the preceding command indicates that the server is running but that you have
+not defined any business endpoints yet. Instead of a default container-generated HTML
+error response, you see a generic JSON response from the Actuator `/error` endpoint. You
+can see in the console logs from the server startup which endpoints are provided out of
+the box. You can try a few of those endpoints, including the `/health` endpoint. The
+following example shows how to do so:
 
-....
+====
+[source,bash]
+----
 $ curl localhost:8080/actuator/health
 {"status":"UP"}
-....
+----
+====
 
-You're "UP", so that's good.
+The status is `UP`, so the actuator service is running.
 
-Check out Spring Boot's https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-actuator[Actuator Project] for more details.
+See Spring Boot's
+https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-actuator[Actuator Project]
+for more details.
 
 [[initial]]
-== Create a representation class
-First, give some thought to what your API will look like.
+== Create a Representation Class
 
-You want to handle GET requests for `/hello-world`, optionally with a name query parameter. In response to such a request, you will send back JSON, representing a greeting, that looks something like this:
+First, you need to give some thought to what your API will look like.
 
+You want to handle GET requests for `/hello-world`, optionally with a name query
+parameter. In response to such a request, you want to send back JSON, representing a
+greeting, that looks something like the following:
+
+====
 [source,json]
 ----
 {
@@ -90,111 +156,162 @@ You want to handle GET requests for `/hello-world`, optionally with a name query
     "content": "Hello, World!"
 }
 ----
+====
 
-The `id` field is a unique identifier for the greeting, and `content` is the textual representation of the greeting.
+The `id` field is a unique identifier for the greeting, and `content` contains the textual
+representation of the greeting.
 
-To model the greeting representation, create a representation class:
+To model the greeting representation, create a representation class. The following listing
+(from `src/main/java/com/example/actuatorservice/Greeting.java`) shows the `Greeting`
+class:
 
-`src/main/java/hello/Greeting.java`
+====
 [source,java]
 ----
-include::complete/src/main/java/hello/Greeting.java[]
+include::complete/src/main/java/com/example/actuatorservice/Greeting.java[]
 ----
+====
 
-Now that you'll create the endpoint controller that will serve the representation class.
+Now that you need to create the endpoint controller that will serve the representation
+class.
 
-== Create a resource controller
-In Spring, REST endpoints are just Spring MVC controllers. The following Spring MVC controller handles a GET request for /hello-world and returns the `Greeting` resource:
+== Create a Resource Controller
 
-`src/main/java/hello/HelloWorldController.java`
+In Spring, REST endpoints are Spring MVC controllers. The following Spring MVC controller
+(from `src/main/java/com/example/actuatorservice/HelloWorldController.java`) handles a GET
+request for the `/hello-world` endpoint and returns the `Greeting` resource:
+
+====
 [source,java]
 ----
-include::complete/src/main/java/hello/HelloWorldController.java[]
+include::complete/src/main/java/com/example/actuatorservice/HelloWorldController.java[]
 ----
+====
 
-The key difference between a human-facing controller and a REST endpoint controller is in how the response is created. Rather than rely on a view (such as JSP) to render model data in HTML, an endpoint controller simply returns the data to be written directly to the body of the response.
+The key difference between a human-facing controller and a REST endpoint controller is in
+how the response is created. Rather than rely on a view (such as JSP) to render model data
+in HTML, an endpoint controller returns the data to be written directly to the body of the
+response.
 
-The https://docs.spring.io/spring/docs/{spring_version}/javadoc-api/org/springframework/web/bind/annotation/ResponseBody.html[`@ResponseBody`] annotation tells Spring MVC not to render a model into a view, but rather to write the returned object into the response body. It does this by using one of Spring's message converters. Because Jackson 2 is in the classpath, this means that https://docs.spring.io/spring/docs/{spring_version}/javadoc-api/org/springframework/http/converter/json/MappingJackson2HttpMessageConverter.html[`MappingJackson2HttpMessageConverter`] will handle the conversion of Greeting to JSON if the request's `Accept` header specifies that JSON should be returned.
+The https://docs.spring.io/spring/docs/{spring_version}/javadoc-api/org/springframework/web/bind/annotation/ResponseBody.html[`@ResponseBody`]
+annotation tells Spring MVC not to render a model into a view but, rather, to write the
+returned object into the response body. It does so by using one of Spring's message
+converters. Because Jackson 2 is in the classpath,
+https://docs.spring.io/spring/docs/{spring_version}/javadoc-api/org/springframework/http/converter/json/MappingJackson2HttpMessageConverter.html[`MappingJackson2HttpMessageConverter`]
+will handle the conversion of a `Greeting` object to JSON if the request's `Accept` header
+specifies that JSON should be returned.
 
-NOTE: How do you know Jackson 2 is on the classpath? Either run ` mvn dependency:tree` or `./gradlew dependencies` and you'll get a detailed tree of dependencies which shows Jackson 2.x. You can also see that it comes from https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-starters/spring-boot-starter-json[/spring-boot-starter-json], itself imported by https://github.com/spring-projects/spring-boot/blob/master/spring-boot-starters/spring-boot-starter-web/pom.xml[spring-boot-starter-web].
+NOTE: How do you know Jackson 2 is on the classpath? Either run ` mvn dependency:tree` or
+`./gradlew dependencies`, and you get a detailed tree of dependencies that includes
+Jackson 2.x. You can also see that it comes from
+https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-starters/spring-boot-starter-json[/spring-boot-starter-json],
+ itself imported by
+ https://github.com/spring-projects/spring-boot/blob/master/spring-boot-starters/spring-boot-starter-web/pom.xml[spring-boot-starter-web].
 
+== Run the Application
 
-== Create an executable main class
+You can run the application from a custom main class or directly from one of the
+configuration classes. For this simple example, you can use the `SpringApplication` helper
+class. Note that this is the application class that the Spring Initializr created for you,
+and you need not even modify it for it to work for this simple application. The following
+listing (from `src/main/java/com/example/actuatorservice/HelloWorldApplication.java`)
+shows the application class:
 
-You can launch the application from a custom main class, or we can do that directly from one of the configuration classes.  The easiest way is to use the `SpringApplication` helper class:
-
-`src/main/java/hello/HelloWorldApplication.java`
+====
 [source,java]
 ----
-include::complete/src/main/java/hello/HelloWorldApplication.java[]
+include::complete/src/main/java/com/example/actuatorservice/HelloWorldApplication.java[]
 ----
+====
 
-In a conventional Spring MVC application, you would add `@EnableWebMvc` to turn on key behaviors including configuration of a `DispatcherServlet`. But Spring Boot turns on this annotation automatically when it detects **spring-webmvc** on your classpath. This sets you up to build a controller in an upcoming step.
+In a conventional Spring MVC application, you would add `@EnableWebMvc` to turn on key
+behaviors, including configuration of a `DispatcherServlet`. But Spring Boot turns on this
+annotation automatically when it detects *spring-webmvc* on your classpath. This sets you
+up to build a controller in an upcoming step.
 
-The `@SpringBootApplication` also brings in a https://docs.spring.io/spring/docs/{spring_version}/javadoc-api/org/springframework/context/annotation/ComponentScan.html[`@ComponentScan`], which tells Spring to scan the `hello` package for those controllers (along with any other annotated component classes).
+The `@SpringBootApplication` annotation also brings in a
+https://docs.spring.io/spring/docs/{spring_version}/javadoc-api/org/springframework/context/annotation/ComponentScan.html[`@ComponentScan`]
+annotation, which tells Spring to scan the `com.example.actuatorservice` package for those
+controllers (along with any other annotated component classes).
 
 include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/build_an_executable_jar_mainhead.adoc[]
+
 include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/build_an_executable_jar_with_both.adoc[]
 
+Once the service is running (because you ran `spring-boot:run` in a terminal), you can test it by running the following command in a separate terminal:
 
-....
-... service comes up ...
-....
-
-
-Test it:
-....
+====
+[source,bash]
+----
 $ curl localhost:8080/hello-world
 {"id":1,"content":"Hello, Stranger!"}
-....
+----
+====
 
-== Switch to a different server port
+== Switch to a Different Server Port
 
-Spring Boot Actuator defaults to run on port 8080. By adding an `application.properties` file, you can override that setting.
+Spring Boot Actuator defaults to running on port 8080. By adding an
+`application.properties` file, you can override that setting. The following listing (from
+`src/main/resources/application.properties`)shows that file with the necessary changes:
 
-`src/main/resources/application.properties`
+====
 [source,properties]
 ----
 include::complete/src/main/resources/application.properties[]
 ----
+====
 
-Run the server again:
+Run the server again by running the following command in a terminal:
 
+====
 [subs="attributes"]
-....
+----
 $ ./gradlew clean build && java -jar build/libs/{project_id}-0.1.0.jar
+----
+====
 
-... service comes up on port 9000 ...
-....
+The service now starts on port 9000.
 
-Test it:
-....
+You can test that it is working on port 9000 by running the following commands in a
+terminal:
+
+====
+[source,bash]
+----
 $ curl localhost:8080/hello-world
 curl: (52) Empty reply from server
 $ curl localhost:9000/hello-world
 {"id":1,"content":"Hello, Stranger!"}
 $ curl localhost:9001/actuator/health
 {"status":"UP"}
-....
+----
+====
 
-== Test your application
+== Test Your Application
 
-In order to check if your application is functional you should write unit / integration tests of your application.
-Below you can find an example of such a test that checks:
+To check whether your application works, you should write unit and integration tests for
+your application.
+The test class in
+`src/test/java/com/example/actuatorservice/HelloWorldApplicationTests.java`
+ensures that
 
-- if your controller is responsive
-- if your management endpoint is responsive
+* Your controller is responsive.
+* Your management endpoint is responsive.
 
-As you can see for tests we're starting the application on a random port.
+Note that the tests start the application on a random port.
+The following listing shows the test class:
 
-`src/test/java/hello/HelloWorldApplicationTests.java`
+====
 [source,java]
 ----
-include::complete/src/test/java/hello/HelloWorldApplicationTests.java[]
+include::complete/src/test/java/com/example/actuatorservice/HelloWorldApplicationTests.java[]
 ----
+====
 
 == Summary
-Congratulations! You have just developed a simple RESTful service using Spring. You added some useful built-in services thanks to Spring Boot Actuator.
+
+Congratulations! You have just developed a simple RESTful service by using Spring, and you
+added some useful built-in services with Spring Boot Actuator.
 
 == See Also
 
