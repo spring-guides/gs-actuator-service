@@ -86,7 +86,7 @@ following example (from
 directory) shows the class created by the Spring Initializr:
 
 ====
-[source,java]
+[source,java,tabsize=2]
 ----
 include::initial/src/main/java/com/example/actuatorservice/ActuatorServiceApplication.java[]
 ----
@@ -167,7 +167,7 @@ To model the greeting representation, create a representation class. The followi
 class:
 
 ====
-[source,java]
+[source,java,tabsize=2]
 ----
 include::complete/src/main/java/com/example/actuatorservice/Greeting.java[]
 ----
@@ -183,7 +183,7 @@ In Spring, REST endpoints are Spring MVC controllers. The following Spring MVC c
 request for the `/hello-world` endpoint and returns the `Greeting` resource:
 
 ====
-[source,java]
+[source,java,tabsize=2]
 ----
 include::complete/src/main/java/com/example/actuatorservice/HelloWorldController.java[]
 ----
@@ -219,7 +219,7 @@ listing (from `src/main/java/com/example/actuatorservice/HelloWorldApplication.j
 shows the application class:
 
 ====
-[source,java]
+[source,java,tabsize=2]
 ----
 include::complete/src/main/java/com/example/actuatorservice/HelloWorldApplication.java[]
 ----
@@ -303,7 +303,7 @@ Note that the tests start the application on a random port.
 The following listing shows the test class:
 
 ====
-[source,java]
+[source,java,tabsize=2]
 ----
 include::complete/src/test/java/com/example/actuatorservice/HelloWorldApplicationTests.java[]
 ----
