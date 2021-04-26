@@ -40,9 +40,9 @@ results.
 === What You need
 
 :java_version: 1.8
-include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/prereq_editor_jdk_buildtools.adoc[]
+include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/main/prereq_editor_jdk_buildtools.adoc[]
 
-include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/how_to_complete_this_guide.adoc[]
+include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/main/how_to_complete_this_guide.adoc[]
 
 [[scratch]]
 == Starting with Spring Initializr
@@ -141,7 +141,7 @@ $ curl localhost:8080/actuator/health
 The status is `UP`, so the actuator service is running.
 
 See Spring Boot's
-https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-actuator[Actuator Project]
+https://github.com/spring-projects/spring-boot/tree/main/spring-boot-project/spring-boot-actuator[Actuator Project]
 for more details.
 
 [[initial]]
@@ -209,9 +209,9 @@ specifies that JSON should be returned.
 NOTE: How do you know Jackson 2 is on the classpath? Either run ` mvn dependency:tree` or
 `./gradlew dependencies`, and you get a detailed tree of dependencies that includes
 Jackson 2.x. You can also see that it comes from
-https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-starters/spring-boot-starter-json[/spring-boot-starter-json],
+https://github.com/spring-projects/spring-boot/tree/main/spring-boot-project/spring-boot-starters/spring-boot-starter-json[/spring-boot-starter-json],
  itself imported by
- https://github.com/spring-projects/spring-boot/blob/master/spring-boot-starters/spring-boot-starter-web/pom.xml[spring-boot-starter-web].
+ https://github.com/spring-projects/spring-boot/blob/main/spring-boot-starters/spring-boot-starter-web/pom.xml[spring-boot-starter-web].
 
 == Run the Application
 
@@ -239,9 +239,9 @@ https://docs.spring.io/spring/docs/{spring_version}/javadoc-api/org/springframew
 annotation, which tells Spring to scan the `com.example.actuatorservice` package for those
 controllers (along with any other annotated component classes).
 
-include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/build_an_executable_jar_mainhead.adoc[]
+include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/main/build_an_executable_jar_mainhead.adoc[]
 
-include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/build_an_executable_jar_with_both.adoc[]
+include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/main/build_an_executable_jar_with_both.adoc[]
 
 Once the service is running (because you ran `spring-boot:run` in a terminal), you can test it by running the following command in a separate terminal:
 
@@ -325,4 +325,4 @@ The following guides may also be helpful:
 * https://spring.io/guides/gs/spring-boot/[Building an Application with Spring Boot]
 * https://spring.io/guides/gs/serving-web-content/[Serving Web Content with Spring MVC]
 
-include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/footer.adoc[]
+include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/main/footer.adoc[]
