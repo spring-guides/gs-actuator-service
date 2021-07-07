@@ -61,8 +61,7 @@ public class HelloWorldApplicationTests {
 	public void shouldReturn200WhenSendingRequestToManagementEndpoint() throws Exception {
 		@SuppressWarnings("rawtypes")
 		ResponseEntity<Map> entity = this.testRestTemplate.getForEntity(
-				"http://localhost:" + this.mgt + "/actuator/info", Map.class);
-
+				"http://localhost:" + this.mgt + "/actuator", Map.class);
 		then(entity.getStatusCode()).isEqualTo(HttpStatus.OK);
 	}
 
