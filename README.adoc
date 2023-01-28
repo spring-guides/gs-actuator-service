@@ -185,7 +185,7 @@ https://docs.spring.io/spring/docs/{spring_version}/javadoc-api/org/springframew
 will handle the conversion of a `Greeting` object to JSON if the request's `Accept` header
 specifies that JSON should be returned.
 
-NOTE: How do you know Jackson 2 is on the classpath? Either run ` mvn dependency:tree` or
+NOTE: How do you know Jackson 2 is on the classpath? Either run `mvn dependency:tree` or
 `./gradlew dependencies`, and you get a detailed tree of dependencies that includes
 Jackson 2.x. You can also see that it comes from
 https://github.com/spring-projects/spring-boot/tree/main/spring-boot-project/spring-boot-starters/spring-boot-starter-json[/spring-boot-starter-json],
