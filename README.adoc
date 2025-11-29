@@ -33,7 +33,7 @@ It responds with the following JSON:
 
 There are also many features added to your application for managing the service in a
 production (or other) environment. The business functionality of the service you build is
-the same as in {gs-rest-service}[Building a RESTful Web Service]. You need need not use
+the same as in {gs-rest-service}[Building a RESTful Web Service]. You need not use
 that guide to take advantage of this one, although it might be interesting to compare the
 results.
 
