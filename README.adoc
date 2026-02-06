@@ -6,7 +6,7 @@
 :project_id: gs-actuator-service
 
 https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#production-ready[Spring Boot Actuator]
-is a sub-project of Spring Boot. It adds several production grade services to your
+is a subproject of Spring Boot. It adds several production grade services to your
 application with little effort on your part. In this guide, you will build an application
 and then see how to add these services.
 
@@ -33,7 +33,7 @@ It responds with the following JSON:
 
 There are also many features added to your application for managing the service in a
 production (or other) environment. The business functionality of the service you build is
-the same as in {gs-rest-service}[Building a RESTful Web Service]. You need need not use
+the same as in {gs-rest-service}[Building a RESTful Web Service]. You do not need to use
 that guide to take advantage of this one, although it might be interesting to compare the
 results.
 
@@ -46,7 +46,7 @@ include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/
 [[scratch]]
 == Starting with Spring Initializr
 
-You can use this https://start.spring.io/#!type=maven-project&groupId=com.example&artifactId=actuator-service&name=actuator-service&description=Demo%20project%20for%20Spring%20Boot&packageName=com.example.actuator-service&dependencies=web,actuator[pre-initialized project] and click Generate to download a ZIP file. This project is configured to fit the examples in this tutorial.
+You can use this https://start.spring.io/#!type=maven-project&groupId=com.example&artifactId=actuator-service&name=actuator-service&description=Demo%20project%20for%20Spring%20Boot&packageName=com.example.actuatorservice&dependencies=web,actuator[pre-initialized project] and click Generate to download a ZIP file. This project is configured to fit the examples in this tutorial.
 
 To manually initialize the project:
 
@@ -64,9 +64,7 @@ NOTE: You can also fork the project from Github and open it in your IDE or other
 == Run the Empty Service
 
 The Spring Initializr creates an empty application that you can use to get started. The
-following example (from
-`src/main/java/com/example/actuatorservice/ActuatorServiceApplication` in the `initial`
-directory) shows the class created by the Spring Initializr:
+following shows the class created by the Spring Initializr:
 
 ====
 [source,java,tabsize=2]
@@ -86,7 +84,7 @@ launch the web application. All you need to do is run the following command:
 ====
 [source,bash,subs="attributes"]
 ----
-$ ./gradlew clean build && java -jar build/libs/{project_id}-0.1.0.jar
+$ ./gradlew clean build && java -jar build/libs/{project_id}-0.0.1-SNAPSHOT.jar
 ----
 ====
 
@@ -172,15 +170,12 @@ include::complete/src/main/java/com/example/actuatorservice/HelloWorldController
 ----
 ====
 
-The key difference between a human-facing controller and a REST endpoint controller is in
-how the response is created. Rather than rely on a view (such as JSP) to render model data
-in HTML, an endpoint controller returns the data to be written directly to the body of the
-response.
+The key difference between a human-facing controller (`Controller`) and a REST endpoint
+controller (`RestController`) is in how the response is created. Rather than rely on a
+view (such as JSP) to render model data in HTML, an endpoint controller returns the data
+to be written directly to the body of the response.
 
-The https://docs.spring.io/spring/docs/{spring_version}/javadoc-api/org/springframework/web/bind/annotation/ResponseBody.html[`@ResponseBody`]
-annotation tells Spring MVC not to render a model into a view but, rather, to write the
-returned object into the response body. It does so by using one of Spring's message
-converters. Because Jackson 2 is in the classpath,
+The response is written using one of Spring's message converters. Because Jackson 2 is in the classpath,
 https://docs.spring.io/spring/docs/{spring_version}/javadoc-api/org/springframework/http/converter/json/MappingJackson2HttpMessageConverter.html[`MappingJackson2HttpMessageConverter`]
 will handle the conversion of a `Greeting` object to JSON if the request's `Accept` header
 specifies that JSON should be returned.
@@ -250,7 +245,7 @@ Run the server again by running the following command in a terminal:
 ====
 [subs="attributes"]
 ----
-$ ./gradlew clean build && java -jar build/libs/{project_id}-0.1.0.jar
+$ ./gradlew clean build && java -jar build/libs/{project_id}-0.0.1-SNAPSHOT.jar
 ----
 ====
 
