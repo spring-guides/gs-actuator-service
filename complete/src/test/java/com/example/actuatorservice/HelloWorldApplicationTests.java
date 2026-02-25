@@ -15,20 +15,14 @@
  */
 package com.example.actuatorservice;
 
-import java.util.Map;
-
 import org.junit.jupiter.api.Test;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.resttestclient.autoconfigure.AutoConfigureRestTestClient;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.boot.test.web.server.LocalServerPort;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.boot.test.web.server.LocalManagementPort;
 import org.springframework.test.context.TestPropertySource;
-
-import static org.assertj.core.api.BDDAssertions.then;
+import org.springframework.test.web.servlet.client.RestTestClient;
 
 /**
  * Basic integration tests for service demo application.
@@ -36,33 +30,18 @@ import static org.assertj.core.api.BDDAssertions.then;
  * @author Dave Syer
  */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@TestPropertySource(properties = {"management.port=0"})
+@TestPropertySource(properties = {"management.server.port=0"})
+@AutoConfigureRestTestClient
 public class HelloWorldApplicationTests {
 
-	@LocalServerPort
-	private int port;
-
-	@Value("${local.management.port}")
-	private int mgt;
-
-	@Autowired
-	private TestRestTemplate testRestTemplate;
-
 	@Test
-	public void shouldReturn200WhenSendingRequestToController() throws Exception {
-		@SuppressWarnings("rawtypes")
-		ResponseEntity<Map> entity = this.testRestTemplate.getForEntity(
-				"http://localhost:" + this.port + "/hello-world", Map.class);
-
-		then(entity.getStatusCode()).isEqualTo(HttpStatus.OK);
+	public void shouldReturn200WhenSendingRequestToController(@Autowired RestTestClient rest) {
+		rest.get().uri("/hello-world").exchange().expectStatus().isOk();
 	}
 
 	@Test
-	public void shouldReturn200WhenSendingRequestToManagementEndpoint() throws Exception {
-		@SuppressWarnings("rawtypes")
-		ResponseEntity<Map> entity = this.testRestTemplate.getForEntity(
-				"http://localhost:" + this.mgt + "/actuator", Map.class);
-		then(entity.getStatusCode()).isEqualTo(HttpStatus.OK);
+	public void shouldReturn200WhenSendingRequestToManagementEndpoint(@Autowired RestTestClient rest, @LocalManagementPort int port) {
+		rest.get().uri("http://localhost:{port}/actuator", port).exchange().expectStatus().isOk();
 	}
 
 }
