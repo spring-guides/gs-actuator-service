@@ -48,8 +48,6 @@ include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/
 
 You can use this https://start.spring.io/#!type=maven-project&groupId=com.example&artifactId=actuator-service&name=actuator-service&description=Demo%20project%20for%20Spring%20Boot&packageName=com.example.actuatorservice&dependencies=web,actuator[pre-initialized project] and click Generate to download a ZIP file. This project is configured to fit the examples in this tutorial.
 
-NOTE: You will need to add `spring-boot-starter-restclient` as a test dependency for the integration tests to work.
-
 To manually initialize the project:
 
 . Navigate to https://start.spring.io.
@@ -58,7 +56,6 @@ This service pulls in all the dependencies you need for an application and does 
 . Click *Dependencies* and select *Spring Web* and *Spring Boot Actuator*.
 . Click *Generate*.
 . Download the resulting ZIP file, which is an archive of a web application that is configured with your choices.
-. Add `spring-boot-starter-restclient` as a test dependency to your build file for the integration tests.
 
 NOTE: If your IDE has the Spring Initializr integration, you can complete this process from your IDE.
 
@@ -289,8 +286,6 @@ The following listing shows the test class:
 include::complete/src/test/java/com/example/actuatorservice/HelloWorldApplicationTests.java[]
 ----
 ====
-
-NOTE: The test uses Spring's `RestClient` for making HTTP requests. In Spring Boot 4.x, `RestClient.Builder` is auto-configured and can be autowired in tests when `spring-boot-starter-restclient` is present on the test classpath.
 
 == Summary
 
