@@ -16,7 +16,6 @@
 package com.example.actuatorservice;
 
 import org.junit.jupiter.api.Test;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.resttestclient.autoconfigure.AutoConfigureRestTestClient;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -24,24 +23,19 @@ import org.springframework.boot.test.web.server.LocalManagementPort;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.web.servlet.client.RestTestClient;
 
-/**
- * Basic integration tests for service demo application.
- *
- * @author Dave Syer
- */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @TestPropertySource(properties = {"management.server.port=0"})
 @AutoConfigureRestTestClient
-public class HelloWorldApplicationTests {
+public class ActuatorServiceApplicationTests {
 
-	@Test
-	public void shouldReturn200WhenSendingRequestToController(@Autowired RestTestClient rest) {
-		rest.get().uri("/hello-world").exchange().expectStatus().isOk();
-	}
+    @Test
+    public void shouldReturn200WhenSendingRequestToController(@Autowired RestTestClient rest) {
+        rest.get().uri("/hello-world").exchange().expectStatus().isOk();
+    }
 
-	@Test
-	public void shouldReturn200WhenSendingRequestToManagementEndpoint(@Autowired RestTestClient rest, @LocalManagementPort int port) {
-		rest.get().uri("http://localhost:{port}/actuator", port).exchange().expectStatus().isOk();
-	}
+    @Test
+    public void shouldReturn200WhenSendingRequestToManagementEndpoint(@Autowired RestTestClient rest, @LocalManagementPort int port) {
+        rest.get().uri("http://localhost:{port}/actuator", port).exchange().expectStatus().isOk();
+    }
 
 }
