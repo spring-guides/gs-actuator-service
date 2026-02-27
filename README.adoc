@@ -283,7 +283,7 @@ The following listing shows the test class:
 ====
 [source,java,tabsize=2]
 ----
-include::complete/src/test/java/com/example/actuatorservice/HelloWorldApplicationTests.java[]
+include::complete/src/test/java/com/example/actuatorservice/ActuatorServiceApplicationTests.java[]
 ----
 ====
 
